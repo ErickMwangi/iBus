@@ -31,7 +31,7 @@ CORS(app)
 
 migrate = Migrate(app, db)
 secret=app.config["SECRET_KEY"] =b"b\xfe5'\x02\xc5\x9c\xa7\x8d\x96\xcf\xf0)\x05h\t"
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("sqlite:///buses.db")
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///buses.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
@@ -97,18 +97,18 @@ class EmailResource(Resource):
 
 api.add_resource(EmailResource, '/email')
 
-class Index(Resource):
-    def get(self):
-        response_dict={
-            "index":
-            "Welcome to I-Bus API"
-        }
-        response = make_response(
-           jsonify(response_dict),
-           200,
-        )
-        return response
-api.add_resource(Index, '/')
+# class Index(Resource):
+#     def get(self):
+#         response_dict={
+#             "index":
+#             "Welcome to I-Bus API"
+#         }
+#         response = make_response(
+#            jsonify(response_dict),
+#            200,
+#         )
+#         return response
+# api.add_resource(Index, '/')
 # users = {
 #     "user1": ("password1", 1),
 #     "user2": ("password2", 2),
