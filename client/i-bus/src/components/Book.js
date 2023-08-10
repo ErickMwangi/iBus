@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import BusList from './BusList';
 import Footer from './Footer';
-import Booking from './Booking';
 import './Book.css'; // Import the CSS file
 const Book = () => {
   const [originalBuses, setOriginalBuses] = useState([])
@@ -75,7 +74,7 @@ const Book = () => {
     <>
     <div>
     <div className="bus-booking-page">
-      <img className='book-page-image' src='images/book-image-clear.png' alt='book-bus-image'/>
+      <img className='book-page-image' src='images/book-image-clear.png' alt='book-bus'/>
       <div className="search-form">
         <form onSubmit={handleSearch}>
           <select value={searchFrom} onChange={(e) => setSearchFrom(e.target.value)}>
