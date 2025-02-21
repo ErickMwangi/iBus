@@ -23,7 +23,7 @@
     
     
     .title-div{
-      background-color: #ffffff;
+      background-color: #c3c2c2;
       width: 420px;
       height: 120px;
       align-items: center;
@@ -31,6 +31,9 @@
       display: flex;
       color: #0080DD;
       font-size: 140%;
+      border-radius: 20px;
+      padding-top: 20px;
+      padding-bottom: 20px
     
     }
     
@@ -46,7 +49,7 @@
     
     .why-us-title{
       text-decoration: underline;
-      font-size: 70px;
+      font-size: 60px;
     }
     
     .why-us-list{
@@ -61,11 +64,11 @@
       color: #ffffff;
       font-size: 15px;
       
-      border-radius: 20px;
+      border-radius: 34px;
       cursor: pointer;
       margin-top: 40px;
-      padding-left: 10px;
-      padding-right: 10px;
+      padding-left: 33px;
+      padding-right: 7px;
     }
   
 

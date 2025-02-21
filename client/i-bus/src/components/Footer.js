@@ -95,7 +95,7 @@ const Footer = () => {
                   <hr className="mb-4 mt-0 d-inline-block mx-auto" style={{ width: '60px', backgroundColor: '#7c4dff', height: '2px' }} />
                   <p><i className="fas fa-home mr-3"></i> Ngong road Nairobi Kenya</p>
                   <p><i className="fas fa-envelope mr-3"></i> ibus@gmail.com</p>
-                  <p><i className="fas fa-phone mr-3"></i> 0710345785</p>
+                  <p><i className="fas fa-phone mr-3"></i> +254792829287</p>
                   
                 </div>
                 {/* Grid column */}
@@ -107,8 +107,8 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="text-center p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-            © 2023 Copyright:
-            <a className="text-white" href="https://mdbootstrap.com/">Ibus-bookig.com</a>
+            © 2025 All Rights Reserved: <br/>
+            <a className="text-white" href="https://mdbootstrap.com/">Ibus-booking.com</a>
           </div>
           {/* Copyright */}
         </footer>
