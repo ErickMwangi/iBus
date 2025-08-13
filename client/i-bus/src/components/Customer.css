@@ -1,132 +1,104 @@
-
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
 body {
-  background-color: #1373c1;
-}
-
-
-/* Header */
-h1 {
-  color: blue;
-  text-align: center;
-}
-
-.kastoma{
-  margin-top: 125px;
   
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: white;
 }
-/* Login and Signup Forms */
+
+.customer-page {
+  background: linear-gradient(to right, #1373c1, #0b4f88);
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
 .login-container {
   display: flex;
-  justify-content: space-between;
-  margin-top:10px;
-  margin-left: 40px;
-  margin-right: 40px;
-  border-radius: 40%;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.login-form,
-.signup-form {
-  width: 45%;
-  padding:10%;
-  margin-top:-10%;
+.form-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 450px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
 }
 
-.login-form h2,
-.signup-form h2 {
-  text-align: center;
+.form-box:hover {
+  transform: translateY(-5px);
+}
+
+h2 {
   margin-bottom: 10px;
+  font-weight: 600;
 }
 
-.customer-login-form {
-  display: flex;
-  flex-direction: column;
-}
-
-form label {
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-form input {
-  padding: 10px;
+p {
+  font-size: 0.9rem;
   margin-bottom: 20px;
-  
+  opacity: 0.8;
 }
 
-form button {
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
   padding: 10px;
-  background-color: blue;
-  color: #fff;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.btn-primary,
+.btn-secondary {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
   border: none;
   cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease;
 }
 
-form button:hover {
-  background-color: #007bff;
+.btn-primary {
+  background: #00aaff;
+  color: white;
 }
 
-/* Responsive Styles */
-@media screen and (max-width: 768px) {
+.btn-primary:hover {
+  background: #0090d1;
+}
+
+.btn-secondary {
+  background: #ffaa00;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #d18c00;
+}
+
+@media (max-width: 768px) {
   .login-container {
     flex-direction: column;
-  }
-
-  .login-form,
-  .signup-form {
-    width: 100%;
-    padding:10%;
-    margin-top:-10%;
-  }
-  
-  .login-form h2,
-  .signup-form h2 {
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  .customer-login-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  form label {
-    margin-top: 10px;
-    font-weight: bold;
-  }
-  
-  form input {
-    padding: 10px;
-    margin-bottom: 20px;
-    
-  }
-  
-  form button {
-    padding: 10px;
-    background-color: blue;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  form button:hover {
-    background-color: #007bff;
-  }
-  
-  /* Responsive Styles */
-  @media screen and (max-width: 768px) {
-    .login-container {
-      flex-direction: column;
-    }
-  
-    .login-form,
-    .signup-form {
-      width: 100%;
-    }
   }
 }

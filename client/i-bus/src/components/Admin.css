@@ -1,63 +1,121 @@
-/* admin.css */
+/* ==== DASHBOARD CONTAINER ==== */
+.admin-dashboard {
+  padding: 2rem;
+  background: #f5f7fa;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
 
-/* Overall styling */
-.mini {
-    background-color: #628eac;
-    padding: 20px;
-    color: black;
-  }
-  
-  .container {
-    margin-top: 95px;
-  }
-  
-  /* Card styling */
-  .card-style {
-    border-radius: 20px;
-    background-color: #3498db;
-    width: 25vw;
-    color: rgb(43, 133, 197);
-    padding: 10px;
-  }
-  
-  .card-style3 {
-    margin-top: 20px;
-    border-radius: 20px;
-    width: 15vw;
-    height: 10vh;
-    flex-wrap: nowrap;
-    background-color: #3498db;
-    color: white;
-    padding: 10px;
-  }
-  
-  /* Chart container */
-  .chart-container {
-    margin-top: 50px;
-  }
-  
-  /* Additional styles for specific elements */
-  .card-style3 p.nums {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .chart-title {
-    font-size: 24px;
-    color: rgb(38, 84, 114);
-    margin-bottom: 10px;
-  }
+.dashboard-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #222;
+}
 
+/* ==== STAT CARDS ==== */
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
 
+.stat-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
 
+.stat-card p {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  color: #0f766e;
+}
 
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
 
-  
-  /* Media query for responsiveness */
-  @media (max-width: 768px) {
-    .card-style,
-    .card-style3 {
-      width: 100%;
-    }
+/* ==== CHART SECTION ==== */
+.chart-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.chart-box {
+  background: #fff;
+  padding: 1.2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.chart-box h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.chart-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ==== FORMS SECTION ==== */
+.forms-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.forms-section form,
+.forms-section .form-wrapper {
+  background: #fff;
+  padding: 1.2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.forms-section h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* ==== BUTTONS ==== */
+button,
+input[type="submit"] {
+  background: #0f766e;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background: #115e59;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 992px) {
+  .chart-section {
+    grid-template-columns: 1fr;
   }
-  
+  .forms-section {
+    grid-template-columns: 1fr;
+  }
+}

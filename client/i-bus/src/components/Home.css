@@ -1,180 +1,172 @@
-.home-page{
-  position: relative;
-  }
-  
-  .home-background{
-      width: 100vw;
-      top:-80px;
-      height: 120vh;
-      margin: 0;
-      padding: 0;
-      background-image: url('../../public/images/Home-page-pic-no-slogan.png'); /* Replace with the actual image path */
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
-    
-    .home-text{
-      position: absolute;
-      right: 5%;
-      top: 4%;
-      
-      
-    }
-    
-    
-    .title-div{
-      background-color: #c3c2c2;
-      width: 420px;
-      height: 120px;
-      align-items: center;
-      justify-content: center;
-      display: flex;
-      color: #0080DD;
-      font-size: 140%;
-      border-radius: 20px;
-      padding-top: 20px;
-      padding-bottom: 20px
-    
-    }
-    
-    
-    .why-us-div{
-      color: #ffffff;
-      float: left;
-      font-size: 250%;
-      text-align: left;
-      margin-top: 40px;
-      
-    }
-    
-    .why-us-title{
-      text-decoration: underline;
-      font-size: 60px;
-    }
-    
-    .why-us-list{
-      text-decoration: none;
-      position: relative;
-      right: 40px;
-    }
-  
-    .home-book-button {
-      background-color: rgb(9, 9, 9);
-      border: 2px solid #ffffff;
-      color: #ffffff;
-      font-size: 15px;
-      
-      border-radius: 34px;
-      cursor: pointer;
-      margin-top: 40px;
-      padding-left: 33px;
-      padding-right: 7px;
-    }
-  
-
-    
-    .home-book-button:hover {
-      color: #007bff !important; /* Blue text color on hover (with !important) */
-      background-color: #9eb2f5; /* White background on hover */
-    }
-  
-   .navLink-book{
-    color: #ffffff;
-    margin-top: 23px;
-    padding-right: 10px;
-    padding-bottom: 15px;
-    padding-left: 10px;
-    font-size: 190%;
-    float: left;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    text-decoration: none;
-    font-weight: bold;
-   }
-    
-  
-    .middle-page{
-      padding: 5% 10%;
-    }
-  
-    .how-it-works{
-      text-align: center;
-    }
-  
-    .how-it-works-pic {
-      display: inline-block; /* Set the divs to display side by side */
-      margin-right: 40px; /* Add some spacing between the divs */
-    }
-  
-    .how-it-works-pic img {
-      max-width: 350px;
-      max-height: 350px;
-      border-radius: 15px;
-    }
-  
-    .home-bus-image-2{
-      width: 100%;
-      height: 100%;
-      margin-top: 50px;
-      margin-bottom: 40px;
-    }
-  
-  
-    .icon-section{
-      padding: 5% 10%;
-    }
-    /* Media Query for screens smaller than 768px */
-@media (max-width: 767px) {
-  .home-text {
-    right: 2%;
-    top: 2%;
-  }
-  
-  .title-div {
-    width: 300px;
-    height: 90px;
-    font-size: 120%;
-  }
-  
-  .why-us-div {
-    font-size: 200%;
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .why-us-title {
-    font-size: 50px;
-  }
-  
-  .navLink, .navLink-book {
-    font-size: 140%;
-    padding-right: 40px;
-    margin-top: 10px;
-  }
-  
-  .how-it-works-pic img {
-    max-width: 250px;
-    max-height: 250px;
-  }
-  
-  .home-bus-image-2 {
-    margin-top: 30px;
-    margin-bottom: 20px;
-  }
-  
-  .middle-page, .icon-section {
-    padding: 5% 5%;
-  }
+:root {
+  --primary: #007bff;
+  --secondary: #00bcd4;
+  --accent: gold;
+  --text-dark: #222;
+  --text-light: #fff;
 }
 
-/* Media Query for screens between 768px and 1023px */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .title-div {
-    width: 350px;
-    height: 100px;
+.home-page {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===== HERO SECTION ===== */
+.home-background {
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+              url('../../public/images/Home-page-pic-no-slogan.png') center/cover no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end; /* Push content to right side */
+  align-items: center;
+  padding: 0 6%;
+  color: var(--text-light);
+  text-align: right; /* Align all text to right */
+}
+
+.home-text {
+  max-width: 500px;
+}
+
+/* Title Box */
+.title-div {
+  background: rgba(255,255,255,0.9);
+  color: var(--primary);
+  padding: 20px 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  margin-left: auto; /* Ensures it's right aligned */
+}
+
+/* Why Us Section */
+.why-us-div {
+  margin-top: 30px;
+}
+
+.why-us-title {
+  font-size: 2.5rem;
+  text-decoration: underline;
+}
+
+.why-us-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.why-us-list li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align icon & text to the right */
+  gap: 10px; /* Space between text and checkmark */
+}
+
+.why-us-list li::before {
+  content: '✔';
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Tagline */
+.tagline {
+  font-size: 1.8rem;
+  margin-top: 20px;
+}
+
+/* Book Button */
+.home-book-button {
+  margin-top: 20px;
+  background: var(--primary);
+  border: none;
+  border-radius: 30px;
+  padding: 12px 25px;
+  transition: 0.3s ease;
+}
+
+.home-book-button:hover {
+  background: var(--secondary);
+  transform: translateY(-3px);
+}
+
+.navLink-book {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* ===== MIDDLE SECTION ===== */
+.middle-page, .icon-section {
+  padding: 5% 10%;
+  text-align: center;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.how-it-works-pic {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  max-width: 300px;
+  transition: 0.3s;
+}
+
+.how-it-works-pic img {
+  width: 100%;
+  height: auto;
+}
+
+.how-it-works-pic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+}
+
+.mid-image-text {
+  padding: 15px;
+}
+
+/* ===== BANNER ===== */
+.bus-banner-image img {
+  width: 100%;
+  border-radius: 0;
+}
+
+/* ===== ANIMATIONS ===== */
+.animate-fade-in {
+  animation: fadeIn 1.2s ease forwards;
+}
+.animate-slide-up {
+  animation: slideUp 1.2s ease forwards;
+}
+.animate-hover:hover {
+  transform: translateY(-5px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .home-background {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding: 5%;
   }
-  
-  .navLink, .navLink-book {
-    font-size: 160%;
-    padding-right: 50px;
+  .why-us-list li {
+    justify-content: center;
   }
 }

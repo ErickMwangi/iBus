@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell } from "recharts";
+import {
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  PieChart, Pie, Cell, ResponsiveContainer
+} from "recharts";
 import AddBusForm from "./AddBusForm";
 import UpdateDeleteBusForm from "./UpdateDeleteBusForm";
 import AddBookingForm from "./AddBookingForm";
 import UpdateDeleteBookingForm from "./UpdateDeleteBookingForm";
 import UploadFile from "./UploadFile";
-import './Admin.css'
+import "./Admin.css";
 
 function Admin() {
   const [buses, setBuses] = useState([]);
@@ -17,102 +20,96 @@ function Admin() {
     fetchBookings();
   }, []);
 
-  const fetchBuses = () => {
-    fetch("http://127.0.0.1:5555/buses")
-      .then((response) => response.json())
-      .then((data) => setBuses(data))
-      .catch((error) => console.error("Error fetching buses:", error));
+  const fetchBuses = async () => {
+    try {
+      const res = await fetch("http://127.0.0.1:5555/buses");
+      setBuses(await res.json());
+    } catch (err) {
+      console.error("Error fetching buses:", err);
+    }
   };
 
-  const fetchBookings = () => {
-    fetch("http://127.0.0.1:5555/bookings")
-      .then((response) => response.json())
-      .then((data) => setBookings(data))
-      .catch((error) => console.error("Error fetching bookings:", error));
+  const fetchBookings = async () => {
+    try {
+      const res = await fetch("http://127.0.0.1:5555/bookings");
+      setBookings(await res.json());
+    } catch (err) {
+      console.error("Error fetching bookings:", err);
+    }
   };
 
-  const addBus = (newBus) => {
-    fetch("http://127.0.0.1:5555/buses", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newBus),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setBuses([...buses, data]);
-      })
-      .catch((error) => console.error("Error adding bus:", error));
+  const addBus = async (newBus) => {
+    try {
+      const res = await fetch("http://127.0.0.1:5555/buses", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newBus),
+      });
+      const data = await res.json();
+      setBuses([...buses, data]);
+    } catch (err) {
+      console.error("Error adding bus:", err);
+    }
   };
 
-  const updateBus = (id, updatedBus) => {
-    fetch(`http://127.0.0.1:5555/buses/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedBus),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const updatedBuses = buses.map((bus) => (bus.id === id ? data : bus));
-        setBuses(updatedBuses);
-      })
-      .catch((error) => console.error("Error updating bus:", error));
+  const updateBus = async (id, updatedBus) => {
+    try {
+      const res = await fetch(`http://127.0.0.1:5555/buses/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedBus),
+      });
+      const data = await res.json();
+      setBuses(buses.map((bus) => (bus.id === id ? data : bus)));
+    } catch (err) {
+      console.error("Error updating bus:", err);
+    }
   };
 
-  const deleteBus = (id) => {
-    fetch(`http://127.0.0.1:5555/buses/${id}`, {
-      method: "DELETE",
-    })
-      .then(() => {
-        const updatedBuses = buses.filter((bus) => bus.id !== id);
-        setBuses(updatedBuses);
-      })
-      .catch((error) => console.error("Error deleting bus:", error));
+  const deleteBus = async (id) => {
+    try {
+      await fetch(`http://127.0.0.1:5555/buses/${id}`, { method: "DELETE" });
+      setBuses(buses.filter((bus) => bus.id !== id));
+    } catch (err) {
+      console.error("Error deleting bus:", err);
+    }
   };
 
-  const addBooking = (newBooking) => {
-    fetch("http://127.0.0.1:5555/bookings", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newBooking),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setBookings([...bookings, data]);
-      })
-      .catch((error) => console.error("Error adding booking:", error));
+  const addBooking = async (newBooking) => {
+    try {
+      const res = await fetch("http://127.0.0.1:5555/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newBooking),
+      });
+      const data = await res.json();
+      setBookings([...bookings, data]);
+    } catch (err) {
+      console.error("Error adding booking:", err);
+    }
   };
 
-  const updateBooking = (id, updatedBooking) => {
-    fetch(`http://127.0.0.1:5555/bookings/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedBooking),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const updatedBookings = bookings.map((booking) => (booking.id === id ? data : booking));
-        setBookings(updatedBookings);
-      })
-      .catch((error) => console.error("Error updating booking:", error));
+  const updateBooking = async (id, updatedBooking) => {
+    try {
+      const res = await fetch(`http://127.0.0.1:5555/bookings/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedBooking),
+      });
+      const data = await res.json();
+      setBookings(bookings.map((b) => (b.id === id ? data : b)));
+    } catch (err) {
+      console.error("Error updating booking:", err);
+    }
   };
 
-  const deleteBooking = (id) => {
-    fetch(`http://127.0.0.1:5555/bookings/${id}`, {
-      method: "DELETE",
-    })
-      .then(() => {
-        const updatedBookings = bookings.filter((booking) => booking.id !== id);
-        setBookings(updatedBookings);
-      })
-      .catch((error) => console.error("Error deleting booking:", error));
+  const deleteBooking = async (id) => {
+    try {
+      await fetch(`http://127.0.0.1:5555/bookings/${id}`, { method: "DELETE" });
+      setBookings(bookings.filter((b) => b.id !== id));
+    } catch (err) {
+      console.error("Error deleting booking:", err);
+    }
   };
 
   const data = [
@@ -131,207 +128,65 @@ function Admin() {
     { name: "Company D", income: 15000 },
     { name: "Company E", income: 9000 },
   ];
-  const containerStyle = {
-    marginTop: "0px",
-  };
-  
-  const cardStyle = {
-    borderRadius: "20px",
-    backgroundColor: "blue",
-    width: "20vw",
-    color: "white",
-    paddingLeft: "10px",
-    fontSize: "30px",
-  };
-  
-  const cardStyle3 = {
-    marginTop: "20px",
-    paddingLeft: "10px",
-    borderRadius: "20px",
-    width: "15vw",
-    backgroundColor: "blue",
-    color: "white",
-    padding: "30px",
-    fontSize: "30px",
-  };
-  
-  const chartContainerStyle = {
-    marginTop: "50px",
-  };
-  
-  const miniStyle = {
-    backgroundColor: "48CAE4",
-  };
-  
-  const adm = {
-    fontSize: "50px",
-    marginBottom: "50px",
-  };
-  
-  const pi = {
-    backgroundColor: "#57A0D2",
-  };
-  
-  // Media queries
-  
-  const containerStyleMobile = {
-    marginTop: "20px", // Adjust the marginTop value for mobile devices
-  };
-  
-  const cardStyleMobile = {
-    width: "90vw", // Adjust the width for mobile devices
-    paddingLeft: "20px", // Adjust the paddingLeft for mobile devices
-  };
-  
-  const cardStyle3Mobile = {
-    width: "30vw", 
-    padding: "10px", 
-  };
-  
-  const admMobile = {
-    fontSize: "40px", // Adjust the font size for mobile devices
-    marginBottom: "30px", // Adjust the marginBottom for mobile devices
-  };
-  
-  // Apply media query styles
-  if (window.innerWidth <= 768) {
-    Object.assign(containerStyle, containerStyleMobile);
-    Object.assign(cardStyle, cardStyleMobile);
-    Object.assign(cardStyle3, cardStyle3Mobile);
-    Object.assign(adm, admMobile);
-  }
-  
-  
 
   return (
-    <div className="mini" style={miniStyle}>
-      <div className="container" style={containerStyle}>
-        <div className="row">
-          <div className="col-md-12">
-            <h1 style={adm}>Admin Dashboard </h1>
-            <div className="row">
-        <div className="col-md-6">
-          <h2>Admin Statistics</h2>
-          <div className="card" style={cardStyle}>
-            <div className="card-body">
-              <h3>Total Income</h3>
-              <p className="nums">ksh 30,000</p>
-            </div>
-          </div>
-          <div className="card" style={cardStyle}>
-            <div className="card-body">
-              <h3>Total Expenses</h3>
-              <p className="nums">ksh 30,000</p>
-            </div>
-          </div>
-          <div className="card" style={{backgroundColor:"#57A0D2"}}>
-            <div className="card-body">
-              <h2>Company Comparison</h2>
-              <PieChart width={600} height={300}>
-                <Pie
-                 style={pi}
-                  dataKey="income"
-                  data={companyComparisonData}
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={80}
-                  fill="#8884d8"
-                  label
-                >
-                  {companyComparisonData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={`#${index + 8}42ca9d`} />
-                  ))}
-                </Pie>
-                <Tooltip />
-              </PieChart>
-              </div>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="card3" style={cardStyle3}>
-                <div className="card-body">
-                  <h3>Total Customers</h3>
-                  <p className="nums">500</p>
-                </div>
-              </div>
-              <div className="card3" style={cardStyle3}>
-                <div className="card-body">
-                  <h3>Total Buses</h3>
-                  <p className="nums">50</p>
-                </div>
-              </div>
-              <div className="card3" style={cardStyle3}>
-                <div className="card-body">
-                  <h3>Total Bookings</h3>
-                  <p className="nums">300</p>
-                </div>
-              </div>
-              <div className="card3" style={cardStyle3}>
-                <div className="card-body">
-                  <h3>Total Routes</h3>
-                  <p className="nums">30</p>
-                </div>
-              </div>
-              <div className="card">
-                <div className="card-body">
-                  {/* <table className="table"> */}
-                    {/* Table content here */}
-                  {/* </table> */}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row" style={chartContainerStyle}>
-            <div className="col-md-12">
-              <div className="card" style={{ backgroundColor: "#cccccc" }}>
-                <div className="card-body">
-                  <h2>Analysis Chart</h2>
-                  <LineChart width={600} height={400} data={data}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Line type="monotone" dataKey="income" name="Income" stroke="#8884d8" />
-                    <Line type="monotone" dataKey="expenses" name="Expenses" stroke="#82ca9d" />
-                  </LineChart>
-                </div>
-              </div>
-            </div>
-          </div>     
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-            <AddBusForm onAddBus={addBus} />
-            <br></br>
-            <UploadFile />
-          </div>
-          
-          <div className="col-md-6">
-            <UpdateDeleteBusForm
-              buses={buses}
-              onUpdateBus={updateBus}
-              onDeleteBus={deleteBus}
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-            <AddBookingForm onAddBooking={addBooking} />
-          </div>
-          <div className="col-md-6">
-            <UpdateDeleteBookingForm
-              bookings={bookings}
-              onUpdateBooking={updateBooking}
-              onDeleteBooking={deleteBooking}
-            />
-          </div>
-        </div>
-        </div>
+    <div className="admin-dashboard">
+      <h1 className="dashboard-title">Admin Dashboard</h1>
+      <div className="stats-section">
+        <div className="stat-card">Total Income <p>Ksh 30,000</p></div>
+        <div className="stat-card">Total Expenses <p>Ksh 20,000</p></div>
+        <div className="stat-card">Total Customers <p>500</p></div>
+        <div className="stat-card">Total Buses <p>50</p></div>
+        <div className="stat-card">Total Bookings <p>300</p></div>
+        <div className="stat-card">Total Routes <p>30</p></div>
+      </div>
+
+      <div className="chart-section">
+        <div className="chart-box">
+          <h2>Company Comparison</h2>
+          <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
+              <Pie
+                dataKey="income"
+                data={companyComparisonData}
+                outerRadius={100}
+                fill="#8884d8"
+                label
+              >
+                {companyComparisonData.map((_, index) => (
+                  <Cell key={index} fill={`#${index + 8}42ca9d`} />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
         </div>
 
-      );
-    }
-    
-    export default Admin;
+        <div className="chart-box">
+          <h2>Income vs Expenses</h2>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={data}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="income" stroke="#8884d8" />
+              <Line type="monotone" dataKey="expenses" stroke="#82ca9d" />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+
+      <div className="forms-section">
+        <AddBusForm onAddBus={addBus} />
+        <UpdateDeleteBusForm buses={buses} onUpdateBus={updateBus} onDeleteBus={deleteBus} />
+        <AddBookingForm onAddBooking={addBooking} />
+        <UpdateDeleteBookingForm bookings={bookings} onUpdateBooking={updateBooking} onDeleteBooking={deleteBooking} />
+        <UploadFile />
+      </div>
+    </div>
+  );
+}
+
+export default Admin;
